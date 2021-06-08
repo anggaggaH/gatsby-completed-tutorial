@@ -1,5 +1,7 @@
 const path = require("path")
 const slugify = require("slugify")
+const axios = require('axios');
+
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
 
@@ -25,6 +27,33 @@ exports.createPages = async ({ graphql, actions }) => {
           tag: tag,
         },
       })
+    })
+  })
+
+  const get = () => axios.get('http://api.bzpublish.com/sites/', {
+    params: '',
+    headers: {
+      "Authorization": "Token 4a9023f1f352ff4d3eef0673951f29a06ee0e495",
+      "Content-Type": "application/json"
+    }
+  });
+
+  const allSites = await get()
+  let sites = allSites.data.results
+
+  createPage({
+    path: `/sites`,
+    component: path.resolve("src/pages/sites.js"),
+    context: {...sites},
+  })
+
+  // Create a page for each Site.
+  sites.forEach(site => {
+    const nameSlug = slugify(site.name, { lower: true })
+    createPage({
+      path: `/sites/${nameSlug}/`,
+      component: require.resolve("./src/templates/site.js"),
+      context: { site },
     })
   })
 }
