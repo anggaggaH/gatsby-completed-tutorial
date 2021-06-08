@@ -4,7 +4,7 @@ import Layout from '../components/Layout'
 import styled from "styled-components"
 import FetchData from '../examples/fetchData'
 import AllRecipes from '../components/AllRecipes.js'
-import SEO from '../components/SEO'
+import Seo from '../components/Seo'
 const Wrapper = styled.section`
   color: red;
   h1 {
@@ -18,7 +18,7 @@ const Wrapper = styled.section`
 export default function Home() {
   return (
     <Layout>
-      <SEO title='Home'/>
+      <Seo title='Home'/>
       <main className='page'>
         <header className='hero'>
           <StaticImage

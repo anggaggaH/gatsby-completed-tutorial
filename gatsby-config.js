@@ -58,92 +58,66 @@ module.exports = {
       },
     },
     `gatsby-plugin-react-helmet`,
-    {
-      resolve: "gatsby-source-custom-api",
-      options: {
-        url: "http://api.bzpublish.com/articles/",
-        headers: {
-          'Authorization': `Token 4a9023f1f352ff4d3eef0673951f29a06ee0e495`,
-          'Content-Type': 'application/json'
-        },
-        rootKey: "articles",
-        schemas: {
-          articles: `
-              id: Int
-              name: String
-          `,
-        },
-      }
-    },
-    {
-      resolve: "gatsby-source-apiserver",
-      options: {
-        // Type prefix of entities from server
-        typePrefix: "bzpublish",
+    `gatsby-plugin-sass`
+    // {
+    //   resolve: "gatsby-source-custom-api",
+    //   options: {
+    //     url: "http://api.bzpublish.com/articles/",
+    //     headers: {
+    //       'Authorization': `Token 4a9023f1f352ff4d3eef0673951f29a06ee0e495`,
+    //       'Content-Type': 'application/json'
+    //     },
+    //     rootKey: "articles",
+    //     schemas: {
+    //       articles: `
+    //           id: Int
+    //           name: String
+    //       `,
+    //     },
+    //   }
+    // },
+    // {
+    //   resolve: "gatsby-source-apiserver",
+    //   options: {
+    //     typePrefix: "bzpublish",
 
-        // The url, this should be the endpoint you are attempting to pull data from
-        url: `http://api.bzpublish.com/articles/`,
+    //     url: `http://api.bzpublish.com/articles/`,
 
-        method: "get",
+    //     method: "get",
 
-        headers: {
-          'Authorization': "Token 4a9023f1f352ff4d3eef0673951f29a06ee0e495",
-          "Content-Type": "application/json"
-        },
+    //     headers: {
+    //       'Authorization': "Token 4a9023f1f352ff4d3eef0673951f29a06ee0e495",
+    //       "Content-Type": "application/json"
+    //     },
 
-        // Request body
-        data: {},
+    //     data: {},
 
-        // Name of the data to be downloaded.  Will show in graphQL or be saved to a file
-        // using this name. i.e. posts.json
-        name: `articles`,
+    //     name: `articles`,
 
-        // Nested level of entities in response object, example: `data.posts`
-        // entityLevel: `data.articles`,
+    //     schemaType: {
+    //       articles: `
+    //           id: Int
+    //           name: String
+    //       `,
+    //     },
 
-        // Define schemaType to normalize blank values
-        // example:
-        // const postType = {
-        //   id: 1,
-        //   name: 'String',
-        //   published: true,
-        //   object: {a: 1, b: '2', c: false},
-        //   array: [{a: 1, b: '2', c: false}]
-        // },
+    //     params: {
+    //       per_page: 1
+    //     },
 
-        schemaType: {
-          articles: `
-              id: Int
-              name: String
-          `,
-          // published: true,
-          // object: {a: 1, b: '2', c: false},
-          // array: [{a: 1, b: '2', c: false}]
-        },
+    //     auth: {
+    //       username: "newadmin",
+    //       password: "anotherpassword"
+    //     },
 
-        // Request parameters
-        // Only available from version 2.1.0
-        params: {
-          per_page: 1
-        },
+    //     allowCache: false,
 
-        // Simple authentication, optional
-        auth: {
-          username: "newadmin",
-          password: "anotherpassword"
-        },
-        // enable disk caching
-        allowCache: false,
-        // if allowCache is true, then the cache will be purged after the
-        // specified amount of time
-        maxCacheDurationSeconds: 60 * 60 * 24,
+    //     maxCacheDurationSeconds: 60 * 60 * 24,
 
-        // Optional payload key name if your api returns your payload in a different key
-        // Default will use the full response from the http request of the url
-        payloadKey: `body`,
-        verboseOutput: true,
-        enableDevRefresh: true
-      }
-    }
+    //     payloadKey: `body`,
+    //     verboseOutput: true,
+    //     enableDevRefresh: true
+    //   }
+    // }
   ],
 }

@@ -44,7 +44,7 @@ exports.createPages = async ({ graphql, actions }) => {
   createPage({
     path: `/sites`,
     component: path.resolve("src/pages/sites.js"),
-    context: {...sites},
+    context: { sites },
   })
 
   // Create a page for each Site.
